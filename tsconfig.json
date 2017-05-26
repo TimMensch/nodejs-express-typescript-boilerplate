@@ -1,15 +1,34 @@
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "es2015",
         "module": "commonjs",
+        "moduleResolution": "node", /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
+        "allowJs": true, /* Allow javascript files to be compiled. */
+        "checkJs": true, /* Report errors in .js files. */
         "noEmitOnError": true,
-        "noImplicitAny": true,
+        "strict": true, /* Enable all strict type-checking options. */
+        "noUnusedLocals": true, /* Report errors on unused locals. */
         "experimentalDecorators": true,
+        "noImplicitReturns": true, /* Report error when not all code paths in function return a value. */
+        "allowSyntheticDefaultImports": true, /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
         "sourceMap": true,
-        "sourceRoot": "src",
+        "removeComments": false, /* Do not emit comments to output. */
         "outDir": "build"
     },
+    "include": [
+        "src/*",
+        "src/**/*"
+    ],
+    "typeRoots": [
+        "./node_modules/@types",
+        "./node_modules",
+        "./typings"
+    ],
     "exclude": [
+        "__tests__",
+        "index.android.js",
+        "index.ios.js",
+        "build",
         "node_modules"
     ]
 }

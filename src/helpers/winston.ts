@@ -1,13 +1,28 @@
-/// <reference path="../typings/winston/winston.d.ts" />
-/// <reference path="../typings/moment/moment.d.ts" />
-import winston = require('winston');
-import moment = require('moment');
-import fs = require('fs');
+import winston = require("winston");
+import moment = require("moment");
+// import fs = require('fs');
 
-const logDir = 'logs';
-const env = process.env.NODE_ENV || 'development';
-const date = moment(new Date()).format("MMDDYYYY");
-const tsFormat = () => (new Date()).toLocaleTimeString();
+// const logDir = 'logs';
+// const env = process.env.NODE_ENV || 'development';
 
-console.log(date);
-console.log(tsFormat);
+function getTimeStamp() {
+    const date = moment(new Date()).format("YYYY-MM-DD HH:MM:SS");
+    //    const tsFormat = () => (new Date()).toLocaleTimeString();
+    return date;
+}
+
+// console.log(getTimeStamp());
+
+export const logger = new winston.Logger({
+    level: "info",
+    filters: [
+        function (level, message, meta) {
+            return getTimeStamp() + "::" + message;
+        }
+    ],
+    transports: [
+        new (winston.transports.Console)(),
+    ]
+});
+
+logger.info("Logger Created");

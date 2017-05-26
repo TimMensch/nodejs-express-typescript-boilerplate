@@ -4,13 +4,23 @@
     "curly": true,
     "eofline": false,
     "forin": true,
-    "indent": false,
+    "indent": [
+      true,
+      "spaces"
+    ],
+    "linebreak-style": [
+      true,
+      "LF"
+    ],
     "label-position": true,
     "label-undefined": true,
-    "max-line-length": [true, 150],
     "no-arg": true,
     "no-bitwise": true,
-    "no-console": false,
+    "no-console": [
+      false
+    ],
+    "no-internal-module": true,
+    "no-invalid-this": false,
     "no-construct": true,
     "no-constructor-vars": false,
     "no-debugger": true,
@@ -19,7 +29,7 @@
     "no-empty": true,
     "no-eval": true,
     "no-string-literal": true,
-    "no-switch-case-fall-through": true,
+sp    "no-switch-case-fall-through": true,
     "no-trailing-whitespace": true,
     "no-unused-expression": true,
     "no-unused-variable": false,
@@ -33,28 +43,30 @@
       "check-else",
       "check-whitespace"
     ],
-    "quotemark": [true, "double"],
-    "semicolon": true,
-    "triple-equals": [true, "allow-null-check"],
-    "typedef": [true,
-      "callSignature",
-      "indexSignature",
-      "parameter",
-      "propertySignature",
-      "variableDeclarator",
-      "memberVariableDeclarator"],
+    "quotemark": [
+      true,
+      "double"
+    ],
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "triple-equals": [
+      true,
+      "allow-null-check"
+    ],
+    "typedef-whitespace": [
+      false
+    ],
     "use-strict": false,
     "variable-name": [
-        true,
-        "allow-leading-underscore"
+      true,
+      "ban-keywords"
     ],
     "whitespace": [
       true,
       "check-branch",
-      "check-decl",
-      "check-operator",
-      "check-separator",
-      "check-type"
+      "check-module"
     ]
   }
 }

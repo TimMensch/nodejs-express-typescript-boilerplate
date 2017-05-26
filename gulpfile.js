@@ -3,6 +3,9 @@ const tslint = require("gulp-tslint");
 const clean = require("gulp-clean");
 const ts = require("gulp-typescript");
 const tsProject = ts.createProject("tsconfig.json");
+const server = require('gulp-develop-server');
+
+const sourcemaps = require('gulp-sourcemaps');
 
 
 gulp.task("lint", function() {
@@ -17,8 +20,24 @@ gulp.task('clean', function() {
         })
         .pipe(clean());
 });
+
 gulp.task('build', function() {
     return tsProject.src()
-        .pipe(ts(tsProject))
-        .js.pipe(gulp.dest("build"));
+        .pipe(sourcemaps.init())
+        .pipe(tsProject(ts.reporter.defaultReporter()))
+        .js
+        .pipe(sourcemaps.write())
+        .pipe(gulp.dest("build"));
+});
+
+gulp.task("watch", [ "build" ], function () {
+    gulp.watch("src/**/*.ts", [ "build" ]);
+});
+
+gulp.task("serve", [ "watch" ], function () {
+    server.listen({
+        path: "./build/server.js",
+        execArgv: [ '--harmony' ]
+    });
+    gulp.watch(["./build/server.js"], server.restart);
 });
